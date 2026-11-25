@@ -4,7 +4,9 @@
  */
 window.SITE_DATA = {
   handle: 'EbParsa',
+  siteUrl: 'https://ebparsa.github.io',
   avatarUrl: 'https://github.com/EbParsa.png?size=256',
+  timezone: 'Asia/Tehran',
   name: {
     en: 'Parsa Ebrahimi',
     fa: 'پارسا ابراهیمی',
@@ -21,6 +23,12 @@ window.SITE_DATA = {
     en: {
       profilesTitle: 'Profiles',
       contactTitle: 'Contact',
+      saveContact: 'Save Contact',
+      qrCode: 'QR Code',
+      share: 'Share',
+      qrTitle: 'Scan to open hub',
+      qrSubtitle: 'ebparsa.github.io',
+      close: 'Close',
       copy: 'Copy',
       copied: 'Copied',
       copyHint: 'Click to copy',
@@ -35,6 +43,12 @@ window.SITE_DATA = {
     fa: {
       profilesTitle: 'پروفایل‌ها',
       contactTitle: 'راه‌های ارتباطی',
+      saveContact: 'ذخیره مخاطب',
+      qrCode: 'کد QR',
+      share: 'اشتراک‌گذاری',
+      qrTitle: 'اسکن برای باز کردن هاب',
+      qrSubtitle: 'ebparsa.github.io',
+      close: 'بستن',
       copy: 'کپی',
       copied: 'کپی شد',
       copyHint: 'کلیک برای کپی',

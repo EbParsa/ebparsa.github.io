@@ -9,7 +9,38 @@
   <meta property="og:description" content="Independent Builder & Concept Designer. Profiles and contact links." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ebparsa.github.io" />
+  <meta property="og:image" content="https://ebparsa.github.io/assets/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Parsa Ebrahimi — @EbParsa" />
+  <meta name="twitter:description" content="Independent Builder & Concept Designer. Profiles and contact links." />
+  <meta name="twitter:image" content="https://ebparsa.github.io/assets/og-card.png" />
   <meta name="theme-color" content="#0d1117" id="theme-color-meta" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Parsa Ebrahimi",
+    "alternateName": ["EbParsa", "پارسا ابراهیمی"],
+    "url": "https://ebparsa.github.io",
+    "image": "https://github.com/EbParsa.png?size=256",
+    "jobTitle": "Independent Builder & Concept Designer",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Karaj",
+      "addressCountry": "IR"
+    },
+    "sameAs": [
+      "https://github.com/EbParsa",
+      "https://www.linkedin.com/in/ebparsa",
+      "https://orcid.org/0009-0007-3053-1979",
+      "https://x.com/EbParsa_",
+      "https://bsky.app/profile/ebparsa.bsky.social",
+      "https://t.me/EbParsa"
+    ]
+  }
+  </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d1117'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='14' fill='%232997ff'%3EEP%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,10 +91,18 @@
         <p class="profile-sub">
           <span id="profile-location">Karaj, Iran</span>
           <span class="dot" aria-hidden="true">·</span>
+          <span id="local-time" class="mono" dir="ltr">UTC+3:30</span>
+          <span class="dot" aria-hidden="true">·</span>
           <span class="mono" dir="ltr">@EbParsa</span>
         </p>
       </div>
     </header>
+
+    <div class="quick-actions" role="group" aria-label="Quick actions">
+      <button type="button" id="btn-vcard" class="action-pill"></button>
+      <button type="button" id="btn-qr" class="action-pill"></button>
+      <button type="button" id="btn-share" class="action-pill"></button>
+    </div>
 
     <main>
       <section class="hub-section" aria-labelledby="profiles-heading">
@@ -90,6 +129,19 @@
       <span id="footer-text" dir="ltr">ebparsa.github.io</span>
     </footer>
   </div>
+
+  <dialog id="qr-dialog" class="qr-dialog" aria-labelledby="qr-dialog-title">
+    <div class="qr-dialog-head">
+      <div>
+        <h2 id="qr-dialog-title" class="qr-title">Scan to open hub</h2>
+        <p id="qr-dialog-sub" class="qr-sub mono" dir="ltr">ebparsa.github.io</p>
+      </div>
+      <button type="button" id="qr-close" class="ctrl-btn ctrl-icon-btn" aria-label="Close">×</button>
+    </div>
+    <div class="qr-frame">
+      <img src="assets/qr-hub.svg" alt="QR code for https://ebparsa.github.io" width="220" height="220" />
+    </div>
+  </dialog>
 
   <script src="data.js"></script>
   <script src="app.js"></script>

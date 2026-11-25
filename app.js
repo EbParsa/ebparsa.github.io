@@ -19,6 +19,9 @@
     check: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>',
     sun: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>',
     moon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>',
+    vcard: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/></svg>',
+    qr: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></svg>',
+    share: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>',
   };
 
   function decodeEmail(obfuscated) {
@@ -95,7 +98,7 @@
       card.href = resolvedUrl;
       if (!item.obfuscated) {
         card.target = '_blank';
-        card.rel = 'noopener noreferrer';
+        card.rel = 'me noopener noreferrer';
       }
       card.setAttribute('aria-label', label + ' — ' + resolvedHandle);
     } else {
@@ -185,6 +188,54 @@
     return wrap;
   }
 
+  function updateLocalTime() {
+    var timeEl = document.getElementById('local-time');
+    if (!timeEl) return;
+    try {
+      var now = new Date();
+      var formatted = new Intl.DateTimeFormat('en-GB', {
+        timeZone: data.timezone || 'Asia/Tehran',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      }).format(now);
+      timeEl.textContent = formatted + ' (UTC+3:30)';
+    } catch (e) {
+      timeEl.textContent = 'UTC+3:30';
+    }
+  }
+
+  function downloadVCard() {
+    var emailItem = data.contact.find(function (c) {
+      return c.id === 'email' && c.obfuscated;
+    });
+    var email = emailItem ? decodeEmail(emailItem.obfuscated) : '';
+    var lines = [
+      'BEGIN:VCARD',
+      'VERSION:3.0',
+      'N:Ebrahimi;Parsa;;;',
+      'FN:Parsa Ebrahimi',
+      'NICKNAME:@EbParsa',
+      'TITLE:Independent Builder & Concept Designer',
+      'URL:' + data.siteUrl,
+      email ? 'EMAIL;TYPE=INTERNET:' + email : '',
+      'ADR;TYPE=HOME:;;Karaj;Alborz;;Iran',
+      'END:VCARD',
+    ].filter(Boolean);
+
+    var blob = new Blob([lines.join('\r\n')], { type: 'text/vcard;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'Parsa_Ebrahimi.vcf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () {
+      URL.revokeObjectURL(url);
+    }, 1000);
+  }
+
   function render() {
     var lang = currentLang();
     var t = data.ui[lang];
@@ -200,6 +251,11 @@
     var contactTitleEl = document.getElementById('contact-heading');
     var langBtn = document.getElementById('lang-toggle');
     var footerEl = document.getElementById('footer-text');
+    var vcardBtn = document.getElementById('btn-vcard');
+    var qrBtn = document.getElementById('btn-qr');
+    var shareBtn = document.getElementById('btn-share');
+    var qrTitleEl = document.getElementById('qr-dialog-title');
+    var qrCloseEl = document.getElementById('qr-close');
 
     if (nameEl) nameEl.textContent = data.name[lang];
     if (headlineEl) headlineEl.textContent = data.headline[lang];
@@ -208,6 +264,12 @@
     if (profilesTitleEl) profilesTitleEl.textContent = t.profilesTitle;
     if (contactTitleEl) contactTitleEl.textContent = t.contactTitle;
     if (footerEl) footerEl.textContent = t.footerText;
+    if (qrTitleEl) qrTitleEl.textContent = t.qrTitle;
+    if (qrCloseEl) qrCloseEl.setAttribute('aria-label', t.close);
+
+    if (vcardBtn) vcardBtn.innerHTML = ICONS.vcard + '<span>' + t.saveContact + '</span>';
+    if (qrBtn) qrBtn.innerHTML = ICONS.qr + '<span>' + t.qrCode + '</span>';
+    if (shareBtn) shareBtn.innerHTML = ICONS.share + '<span>' + t.share + '</span>';
 
     if (langBtn) {
       langBtn.textContent = t.langLabel;
@@ -216,6 +278,7 @@
     }
 
     updateThemeButton();
+    updateLocalTime();
 
     var profilesGrid = document.getElementById('profiles-grid');
     if (profilesGrid) {
@@ -247,5 +310,46 @@
     setTheme(currentTheme() === 'dark' ? 'light' : 'dark');
   });
 
+  document.getElementById('btn-vcard').addEventListener('click', downloadVCard);
+
+  var qrDialog = document.getElementById('qr-dialog');
+  document.getElementById('btn-qr').addEventListener('click', function () {
+    if (qrDialog && typeof qrDialog.showModal === 'function') {
+      qrDialog.showModal();
+    }
+  });
+  document.getElementById('qr-close').addEventListener('click', function () {
+    if (qrDialog) qrDialog.close();
+  });
+  if (qrDialog) {
+    qrDialog.addEventListener('click', function (e) {
+      if (e.target === qrDialog) qrDialog.close();
+    });
+  }
+
+  var shareTimer = null;
+  document.getElementById('btn-share').addEventListener('click', function () {
+    var btn = this;
+    var lang = currentLang();
+    var t = data.ui[lang];
+    if (navigator.share) {
+      navigator.share({
+        title: data.name[lang] + ' — @' + data.handle,
+        url: data.siteUrl,
+      }).catch(function () {});
+      return;
+    }
+    copyText(data.siteUrl).then(function () {
+      btn.classList.add('is-done');
+      btn.innerHTML = ICONS.check + '<span>' + t.copied + '</span>';
+      clearTimeout(shareTimer);
+      shareTimer = setTimeout(function () {
+        btn.classList.remove('is-done');
+        btn.innerHTML = ICONS.share + '<span>' + data.ui[currentLang()].share + '</span>';
+      }, 1800);
+    });
+  });
+
   render();
+  setInterval(updateLocalTime, 30000);
 })();
