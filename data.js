@@ -108,7 +108,7 @@ window.SITE_DATA = {
       id: 'whatsapp',
       platform: 'WhatsApp',
       platformFa: 'واتساپ',
-      handle: '@ebparsa',
+      handle: '@EbParsa',
       url: null,
     },
     {
