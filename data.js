@@ -128,7 +128,8 @@ window.SITE_DATA = {
       platform: 'Discord',
       platformFa: 'دیسکورد',
       handle: 'ebparsa',
-      url: null,
+      url: 'https://discord.com/users/939453873163231262',
+      allowCopy: true,
     },
   ],
 };
