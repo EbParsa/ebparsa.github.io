@@ -1,0 +1,122 @@
+/**
+ * Central configuration and bilingual content for ebparsa.github.io.
+ * Edit this file to update profile metadata, links, or translations.
+ */
+window.SITE_DATA = {
+  handle: 'EbParsa',
+  avatarUrl: 'https://github.com/EbParsa.png?size=256',
+  name: {
+    en: 'Parsa Ebrahimi',
+    fa: 'پارسا ابراهیمی',
+  },
+  headline: {
+    en: 'Independent Builder & Concept Designer',
+    fa: 'سازنده مستقل و طراح کانسپت',
+  },
+  location: {
+    en: 'Karaj, Iran',
+    fa: 'کرج، ایران',
+  },
+  ui: {
+    en: {
+      profilesTitle: 'Profiles',
+      contactTitle: 'Contact',
+      copy: 'Copy',
+      copied: 'Copied',
+      copyHint: 'Click to copy',
+      openHint: 'Open profile',
+      emailHint: 'Send email',
+      langLabel: 'FA',
+      langAria: 'Switch language to Persian',
+      themeToLight: 'Switch to light mode',
+      themeToDark: 'Switch to dark mode',
+      footerText: 'ebparsa.github.io',
+    },
+    fa: {
+      profilesTitle: 'پروفایل‌ها',
+      contactTitle: 'راه‌های ارتباطی',
+      copy: 'کپی',
+      copied: 'کپی شد',
+      copyHint: 'کلیک برای کپی',
+      openHint: 'باز کردن پروفایل',
+      emailHint: 'ارسال ایمیل',
+      langLabel: 'EN',
+      langAria: 'تغییر زبان به انگلیسی',
+      themeToLight: 'تغییر به حالت روشن',
+      themeToDark: 'تغییر به حالت تیره',
+      footerText: 'ebparsa.github.io',
+    },
+  },
+  profiles: [
+    {
+      id: 'github',
+      platform: 'GitHub',
+      platformFa: 'گیت‌هاب',
+      handle: 'EbParsa',
+      url: 'https://github.com/EbParsa',
+      featured: true,
+    },
+    {
+      id: 'linkedin',
+      platform: 'LinkedIn',
+      platformFa: 'لینکدین',
+      handle: 'EbParsa',
+      url: 'https://www.linkedin.com/in/ebparsa',
+    },
+    {
+      id: 'orcid',
+      platform: 'ORCID',
+      platformFa: 'ORCID',
+      handle: '0009-0007-3053-1979',
+      url: 'https://orcid.org/0009-0007-3053-1979',
+    },
+    {
+      id: 'x',
+      platform: 'X',
+      platformFa: 'ایکس (X)',
+      handle: '@EbParsa_',
+      url: 'https://x.com/EbParsa_',
+    },
+    {
+      id: 'bluesky',
+      platform: 'Bluesky',
+      platformFa: 'بلواسکای',
+      handle: '@ebparsa.bsky.social',
+      url: 'https://bsky.app/profile/ebparsa.bsky.social',
+    },
+  ],
+  contact: [
+    {
+      id: 'email',
+      platform: 'Email',
+      platformFa: 'ایمیل',
+      // Anti-spam: encoded parts assembled only at runtime in the browser
+      obfuscated: {
+        userB64: 'ZWJwYXJzYQ==',
+        domainB64: 'b3V0bG9vay5jb20=',
+      },
+      allowCopy: true,
+    },
+    {
+      id: 'telegram',
+      platform: 'Telegram',
+      platformFa: 'تلگرام',
+      handle: '@EbParsa',
+      url: 'https://t.me/EbParsa',
+    },
+    {
+      id: 'whatsapp',
+      platform: 'WhatsApp',
+      platformFa: 'واتساپ',
+      handle: '@ebparsa',
+      url: null,
+    },
+    {
+      id: 'discord',
+      platform: 'Discord',
+      platformFa: 'دیسکورد',
+      handle: 'ebparsa',
+      url: null,
+    },
+  ],
+};

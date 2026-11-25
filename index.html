@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parsa Ebrahimi — @EbParsa</title>
+  <meta name="description" content="Parsa Ebrahimi (@EbParsa) — Independent Builder & Concept Designer. Profiles and contact links." />
+  <meta property="og:title" content="Parsa Ebrahimi — @EbParsa" />
+  <meta property="og:description" content="Independent Builder & Concept Designer. Profiles and contact links." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ebparsa.github.io" />
+  <meta name="theme-color" content="#0d1117" id="theme-color-meta" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d1117'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='14' fill='%232997ff'%3EEP%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('ebparsa-theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        var meta = document.getElementById('theme-color-meta');
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#0d1117' : '#f6f8fa');
+
+        var savedLang = localStorage.getItem('ebparsa-lang');
+        var lang = savedLang === 'fa' || savedLang === 'en' ? savedLang : 'en';
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <nav class="topbar" aria-label="Controls">
+      <span class="topbar-handle" dir="ltr">@EbParsa</span>
+      <div class="topbar-actions">
+        <button type="button" id="lang-toggle" class="ctrl-btn" aria-label="Switch language">FA</button>
+        <button type="button" id="theme-toggle" class="ctrl-btn ctrl-icon-btn" aria-label="Toggle theme"></button>
+      </div>
+    </nav>
+
+    <header class="profile-header">
+      <img
+        id="avatar"
+        class="avatar"
+        src="https://github.com/EbParsa.png?size=256"
+        alt="Parsa Ebrahimi"
+        width="76"
+        height="76"
+        loading="eager"
+        decoding="async"
+      />
+      <div class="profile-meta">
+        <h1 id="profile-name" class="profile-name">Parsa Ebrahimi</h1>
+        <p id="profile-headline" class="profile-headline">Independent Builder &amp; Concept Designer</p>
+        <p class="profile-sub">
+          <span id="profile-location">Karaj, Iran</span>
+          <span class="dot" aria-hidden="true">·</span>
+          <span class="mono" dir="ltr">@EbParsa</span>
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="hub-section" aria-labelledby="profiles-heading">
+        <h2 id="profiles-heading" class="section-title">Profiles</h2>
+        <div id="profiles-grid" class="bento-grid"></div>
+      </section>
+
+      <section class="hub-section" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" class="section-title">Contact</h2>
+        <div id="contact-grid" class="bento-grid"></div>
+      </section>
+
+      <noscript>
+        <div class="noscript-box">
+          JavaScript is disabled. Contact: <code>ebparsa [at] outlook [dot] com</code> ·
+          <a href="https://github.com/EbParsa">GitHub</a> ·
+          <a href="https://www.linkedin.com/in/ebparsa">LinkedIn</a> ·
+          <a href="https://t.me/EbParsa">Telegram</a>
+        </div>
+      </noscript>
+    </main>
+
+    <footer class="footer">
+      <span id="footer-text" dir="ltr">ebparsa.github.io</span>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
