@@ -276,11 +276,6 @@ html[dir='rtl'] .bento-card:hover .card-trail-icon {
   flex-shrink: 0;
 }
 
-.bento-item-wrap.is-featured .card-icon {
-  background-color: var(--accent-subtle);
-  color: var(--accent);
-}
-
 .card-text {
   display: flex;
   flex-direction: column;
