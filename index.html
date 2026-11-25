@@ -67,7 +67,7 @@
 <body>
   <div class="page">
     <nav class="topbar" aria-label="Controls">
-      <span class="topbar-handle" dir="ltr">@EbParsa</span>
+      <button type="button" id="btn-share" class="ctrl-btn ctrl-share-btn" aria-label="Share"></button>
       <div class="topbar-actions">
         <button type="button" id="lang-toggle" class="ctrl-btn" aria-label="Switch language">FA</button>
         <button type="button" id="theme-toggle" class="ctrl-btn ctrl-icon-btn" aria-label="Toggle theme"></button>
@@ -98,12 +98,6 @@
       </div>
     </header>
 
-    <div class="quick-actions" role="group" aria-label="Quick actions">
-      <button type="button" id="btn-vcard" class="action-pill"></button>
-      <button type="button" id="btn-qr" class="action-pill"></button>
-      <button type="button" id="btn-share" class="action-pill"></button>
-    </div>
-
     <main>
       <section class="hub-section" aria-labelledby="profiles-heading">
         <h2 id="profiles-heading" class="section-title">Profiles</h2>
@@ -130,16 +124,20 @@
     </footer>
   </div>
 
-  <dialog id="qr-dialog" class="qr-dialog" aria-labelledby="qr-dialog-title">
+  <dialog id="share-dialog" class="qr-dialog" aria-labelledby="share-dialog-title">
     <div class="qr-dialog-head">
       <div>
-        <h2 id="qr-dialog-title" class="qr-title">Scan to open hub</h2>
-        <p id="qr-dialog-sub" class="qr-sub mono" dir="ltr">ebparsa.github.io</p>
+        <h2 id="share-dialog-title" class="qr-title">Share Hub</h2>
+        <p class="qr-sub mono" dir="ltr">ebparsa.github.io</p>
       </div>
-      <button type="button" id="qr-close" class="ctrl-btn ctrl-icon-btn" aria-label="Close">×</button>
+      <button type="button" id="share-close" class="ctrl-btn ctrl-icon-btn" aria-label="Close">×</button>
     </div>
     <div class="qr-frame">
       <img src="assets/qr-hub.svg" alt="QR code for https://ebparsa.github.io" width="220" height="220" />
+    </div>
+    <div class="share-dialog-actions">
+      <button type="button" id="share-copy-btn" class="action-pill share-action-full"></button>
+      <button type="button" id="share-native-btn" class="action-pill share-action-full" hidden></button>
     </div>
   </dialog>
 

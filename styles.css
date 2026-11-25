@@ -118,6 +118,11 @@ html[lang='fa'] body {
   padding-inline: 0;
 }
 
+.ctrl-share-btn {
+  gap: 7px;
+  font-weight: 500;
+}
+
 .ctrl-btn:hover {
   background-color: var(--surface-hover);
   border-color: var(--border-hover);
@@ -218,12 +223,24 @@ html[lang='fa'] body {
   height: 210px;
 }
 
+.share-dialog-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.share-action-full {
+  width: 100%;
+  justify-content: center;
+}
+
 /* Profile Header */
 .profile-header {
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 36px;
 }
 
 .avatar {
