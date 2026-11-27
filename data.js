@@ -96,6 +96,13 @@ window.SITE_DATA = {
       handle: '@ebparsa.bsky.social',
       url: 'https://bsky.app/profile/ebparsa.bsky.social',
     },
+    {
+      id: 'reddit',
+      platform: 'Reddit',
+      platformFa: 'ردیت',
+      handle: 'u/EbParsa',
+      url: 'https://www.reddit.com/user/EbParsa',
+    },
   ],
   contact: [
     {
